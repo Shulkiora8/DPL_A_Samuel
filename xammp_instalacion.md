@@ -25,6 +25,3 @@ Para ello abrimos el directorio C:\xampp\htdocs. Creamos una carpeta y guardamos
 Abrimos el navegador y nos dirigimos a localhost/test/test.php. Si vemos el mensaje "Hola mundo", la instalación fue exitosa.
 
 ![](/Fotos/xammp.png)
-
-
-
