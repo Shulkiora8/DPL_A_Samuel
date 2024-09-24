@@ -1,0 +1,11 @@
+#GET y POST
+Creamos el fichero get_post.php. Y creamos otro fichero llamado index.php. Dentro de éste creamos un html, ylo conectamos con el método get y la acción = 'get_post.php'. 
+Hacemos un campo input llamado nombre con el nombre='usuario'. 
+Creamos otro input llamado en 'Enviar' con valor 'Send'.
+Ahora en el get_post.php. Usamos "print_r($_GET);" para enviar al servidor la información que se envía desde el html.
+Si queremos añadir algo en concreto tendrémos que especificarlo en el get: "print_r($_GET['usuario']);".
+
+Con el método POST en el index.php el envio no se ve. Aparece el array vacío si no cambiamos nada en el get_post.php.
+Ahora si ponemos en el get_post.php ponemos en vez del $_GET, ponemos $_POST los datos no se mostrarán ya que el proceso es interno.
+Por lo que el código quedaría así:
+"print_r($_POST['usuario']);"
