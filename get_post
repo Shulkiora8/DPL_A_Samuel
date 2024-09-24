@@ -9,3 +9,24 @@ Con el método POST en el index.php el envio no se ve. Aparece el array vacío s
 Ahora si ponemos en el get_post.php ponemos en vez del $_GET, ponemos $_POST los datos no se mostrarán ya que el proceso es interno.
 Por lo que el código quedaría así:
 "print_r($_POST['usuario']);"
+
+El get_post.php quedaría asi:
+<?php
+    print_r($_GET["usuario"]);
+
+Y el index.php así:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=a, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method = get action = get_post.php>
+        Nombre: <input type = "text" name = "usuario">
+        <br>
+        <input type = "submit" name = "enviar" value = "enviar">
+</form>
+</body>
+</html>
