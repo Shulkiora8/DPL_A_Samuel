@@ -12,4 +12,4 @@ Y en cuanto a privilegios globales, le daremos solo a datos y estructura. Le dam
 Vemos que se ha creado el usuario. 
 ![](/Fotos/xammp5.png)
 Ahora al ingresar al phpMyAdmin te pedirá un usuario con el que logearte.
-![](/Fotos/xammp6.png)
+![](/Fotos/xamm6.png)
