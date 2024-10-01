@@ -33,9 +33,11 @@ Y clonamos nuestro repositorio desde visual studio para tenerlo otra vez en loca
 Modificamos el html que hicimos antes:
 
 ![](/Fotos/tarea1_3/9.png)
+
 Y lo volvemos a subir a github con un commit llamado "segundo_commit":
 
 ![](/Fotos/tarea1_3/10.png)
+
 Así se vería en nuestro repositorio:
 
 ![](/Fotos/tarea1_3/12.png)
