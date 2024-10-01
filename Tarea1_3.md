@@ -16,6 +16,7 @@ Añadimos a la carpeta banco un html llamado index.html:
 ![](/Fotos/tarea1_3/6.png)
 
 Hacemos un commit, llamado "primer commit". Y lo subimos a nuestro github.
+
 ![](/Fotos/tarea1_3/7.png)
 
 Vemos que se han subido todos los archivos:
