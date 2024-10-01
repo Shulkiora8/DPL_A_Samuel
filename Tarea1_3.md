@@ -9,6 +9,7 @@ Ponemos la carpeta banco en local:
 ![](/Fotos/tarea1_3/4.png)
 
 Abrimos el Visual Studio Code y lo enlazamos con github:
+
 ![](/Fotos/tarea1_3/5.png)
 
 Añadimos a la carpeta banco un html llamado index.html:
