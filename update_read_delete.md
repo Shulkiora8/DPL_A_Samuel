@@ -39,8 +39,6 @@ echo "<pre>";
 
 $conn = mysqli_connect('localhost', 'root', 'blacklustersoldier', 'pruebas');
 
-
-
 $delete = "delete from users where id=3";
 
 $return = mysqli_query ($conn, $delete);
@@ -58,8 +56,6 @@ include("conexion.php");
 echo "<pre>";
 
 $conn = mysqli_connect('localhost', 'root', 'blacklustersoldier', 'pruebas');
-
-
 
 $update = "Update users set name = 'Joker',email='joker@dominio.es' where id=1";
 
