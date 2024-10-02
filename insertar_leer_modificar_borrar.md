@@ -14,6 +14,11 @@ Si ejecutamos esto en el navegador nos devolverá un "1", por lo que la operaci�
 
 Para poder leer los datos que hay en la base de datos usamos el siguiente código:
 ![](/Fotos/borrar_actualizar_leer_insertar/leer.png)
+Si ejecutamos esto en el navegador nos devolverá un Array con toda la información de la tabla:
+![](/Fotos/borrar_actualizar_leer_insertar/leer1.png)
 
 Para borrar datos en la base de datos usamos el siguiente código:
 ![](/Fotos/borrar_actualizar_leer_insertar/borrar.png)
+Si ejecutamos esto en el navegador nos devolverá un "1", el borrado se hizo correctamente.
+Si vamos a la base de datos veremos que el user que teniamos creado ya no está:
+![](/Fotos/borrar_actualizar_leer_insertar/leer2.png)
