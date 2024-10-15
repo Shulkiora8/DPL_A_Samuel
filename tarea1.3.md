@@ -2,7 +2,7 @@ Primero creamos la carpeta /bloggalpon/.
 ![](Fotos/1.png)
 
 A continuación nos situamos en bloggalpon y creamos el index.html.
-![](/Fotos/2.png)
+![](/fotos/2.png)
 
 Abrimos el html y le insertamos un código simple.
 ![](/Fotos/3.png)
