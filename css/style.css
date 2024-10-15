@@ -1,0 +1,30 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header, section, article, aside, footer {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+}
+
+section {
+    border: 1px solid #ccc;
+}
+
+footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
