@@ -13,3 +13,9 @@ header, section, article, aside, footer {
 section {
     border: 1px solid #ccc;
 }
+
+footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
