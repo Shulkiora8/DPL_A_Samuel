@@ -28,3 +28,7 @@ a {
     color: #007bff;
     text-decoration: none;
 }
+
+* {
+    background-image: url('../images/logo.png');
+}
