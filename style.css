@@ -3,3 +3,9 @@ html, body {
     padding: 0;
     font-family: Arial, sans-serif;
 }
+
+header, section, article, aside, footer {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+}
