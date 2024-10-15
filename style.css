@@ -19,3 +19,12 @@ footer {
     padding: 20px;
     text-align: center;
 }
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
