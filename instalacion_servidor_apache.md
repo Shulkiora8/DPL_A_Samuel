@@ -1,3 +1,4 @@
+Tarea 1.1- Instalación de servidor web Apache
 1. Capas de la Arquitectura Web
 
 La arquitectura web se compone de tres capas principales:
@@ -21,64 +22,79 @@ WISA:
 - Descripción: WISA es una plataforma que utiliza el sistema operativo Windows, el servidor web IIS, SQL Server como sistema de gestión de bases de datos, y ASP.NET para el desarrollo de la lógica de negocio. Es comúnmente utilizada en entornos empresariales, especialmente aquellos que requieren tecnologías de Microsoft.
 
 3. Pasos para Instalar Apache y Tomcat en Ubuntu 10.04 LTS
-  1. Instalar el servidor web Apache
-    Descargar Apache: Ve al sitio web de Apache Lounge y descarga el paquete de Apache para Windows.
-    Por ejemplo, descarga el archivo ZIP y descomprímelo en C:\Apache24.
-    Configurar Apache: Abre PowerShell como administrador y configura Apache:
+  1. Instalar el servidor web Apache desde terminal
+Abre una terminal y ejecuta los siguientes comandos:
+//Actualizar el índice de paquetes
+apt-get update
 
-Navega al directorio de Apache
-cd C:\Apache24\bin
+//Instalar el servidor Apache
+apt-get install apache2
 
-Ejecuta el comando para instalar Apache como un servicio
-.\httpd.exe -k install
+2. Comprobar que está funcionando el servidor Apache desde terminal
+Después de la instalación, puedes verificar el estado del servicio Apache:
+//Comprobar el estado de Apache
 
+service apache2 status
 
-  Iniciar el servicio Apache:
+También puedes comprobar que está escuchando en el puerto 80:
 
-Start-Service apache2.4
+netstat -tuln | grep :80
 
-  2. Comprobar que está funcionando el servidor Apache desde PowerShell
+3. Comprobar que está funcionando el servidor Apache desde navegador
+Abre un navegador web y dirígete a http://localhost/ o http://<tu_dirección_IP>/. Deberías ver la página de bienvenida de Apache.
+4. Cambiar el puerto por el cual está escuchando Apache pasándolo al puerto 82
 
-  Verifica que el servicio está corriendo:
+Para cambiar el puerto, edita el archivo de configuración de Apache:
+//Abrir el archivo de configuración de Apache
 
-Get-Service -Name apache2.4
+nano /etc/apache2/ports.conf
 
-  3. Comprobar que está funcionando el servidor Apache desde el navegador
+Busca la línea que dice:
 
-  Abre tu navegador y dirígete a:
+Listen 80
 
-http://localhost
-
-  Deberías ver la página de bienvenida de Apache.
-  4. Cambiar el puerto por el cual está escuchando Apache
-    Editar el archivo de configuración: Abre el archivo httpd.conf en un editor de texto, por ejemplo, Notepad. La ruta generalmente es C:\Apache24\conf\httpd.conf.
-    Buscar la línea que dice Listen 80 y cambiarla a:
+y cámbiala a:
 
 Listen 82
 
-  Guardar el archivo y reiniciar Apache:
+Luego, edita el archivo de configuración del sitio por defecto:
+//Abrir el archivo de configuración del sitio por defecto
 
-  Stop-Service apache2.4
-  Start-Service apache2.4
+nano /etc/apache2/sites-available/000-default.conf
+
+Cambia la línea que contiene VirtualHost *:80 a:
+
+<VirtualHost *:82>
+
+Después, guarda y cierra el archivo.
+Reinicia el servidor Apache para aplicar los cambios:
+
+service apache2 restart
 
 5. Instalar el servidor de aplicaciones Tomcat
 
-    Descargar Tomcat: Ve al sitio web de Apache Tomcat y descarga el archivo ZIP de la versión que desees.
+Para instalar Tomcat, primero necesitas asegurarte de tener wget y java instalados. Si no tienes wget, instálalo:
 
-    Descomprimir Tomcat: Descomprime el archivo en un directorio, por ejemplo, C:\apache-tomcat-9.
+apt-get install wget
 
-    Iniciar Tomcat: Abre PowerShell y navega al directorio bin de Tomcat:
+Luego, instala Java (si no está instalado):
 
-cd C:\apache-tomcat-9\bin
+apt-get install default-jdk
 
-  Ejecutar el script de inicio:
+Ahora, descarga la última versión de Tomcat (en este ejemplo, tomaremos Tomcat 7):
+//Descargar Tomcat
+wget http://apache.mirrors.pair.com/tomcat/tomcat-7/v7.0.100/bin/apache-tomcat-7.0.100.tar.gz
 
-.\catalina.bat start
+//Descomprimir el archivo
+tar xvf apache-tomcat-7.0.100.tar.gz
 
-  Comprobación de Tomcat
+//Mover a /opt
+mv apache-tomcat-7.0.100 /opt/tomcat
 
-  Abre tu navegador y dirígete a:
+Para iniciar Tomcat:
+//Navegar al directorio de Tomcat y ejecutar el script de inicio:
 
-http://localhost:8080
+cd /opt/tomcat/bin
+./startup.sh
 
-  Deberías ver la página de bienvenida de Tomcat.
+Ahora deberías poder acceder a Tomcat desde el navegador en http://localhost:8080.
