@@ -26,10 +26,10 @@ WISA:
     Por ejemplo, descarga el archivo ZIP y descomprímelo en C:\Apache24.
     Configurar Apache: Abre PowerShell como administrador y configura Apache:
 
-# Navega al directorio de Apache
+Navega al directorio de Apache
 cd C:\Apache24\bin
 
-# Ejecuta el comando para instalar Apache como un servicio
+Ejecuta el comando para instalar Apache como un servicio
 .\httpd.exe -k install
 
 
