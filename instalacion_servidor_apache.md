@@ -22,6 +22,7 @@ WISA:
 - Descripción: WISA es una plataforma que utiliza el sistema operativo Windows, el servidor web IIS, SQL Server como sistema de gestión de bases de datos, y ASP.NET para el desarrollo de la lógica de negocio. Es comúnmente utilizada en entornos empresariales, especialmente aquellos que requieren tecnologías de Microsoft.
 
 3. Pasos para Instalar Apache y Tomcat en Ubuntu 10.04 LTS
+
 1. Instalar el servidor web Apache desde terminal
 Abre una terminal y ejecuta los siguientes comandos:
 //Actualizar el índice de paquetes
