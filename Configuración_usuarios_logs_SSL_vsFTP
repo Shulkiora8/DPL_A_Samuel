@@ -1,0 +1,137 @@
+1. Instalación de vsFTPd
+
+Si aún no tienes instalado vsFTPd, puedes hacerlo con el siguiente comando:
+
+sudo apt update
+sudo apt install vsftpd
+
+2. Configuración de usuarios
+2.1 Crear un usuario para FTP
+
+Puedes crear un usuario específico para FTP de la siguiente manera. Esto es recomendable para evitar que los usuarios del sistema tengan acceso a otras partes del sistema.
+
+sudo useradd -m -s /bin/bash nombre_usuario
+sudo passwd nombre_usuario
+
+2.2 Crear un directorio para el usuario FTP
+
+Crea un directorio en el que el usuario FTP podrá trabajar:
+
+sudo mkdir /home/nombre_usuario/ftp
+
+Configura los permisos adecuados:
+
+sudo chown nobody:nogroup /home/nombre_usuario/ftp
+sudo chmod a-w /home/nombre_usuario/ftp
+sudo mkdir /home/nombre_usuario/ftp/uploads
+sudo chown nombre_usuario:nombre_usuario /home/nombre_usuario/ftp/uploads
+
+En este caso, hemos creado un directorio uploads dentro del directorio FTP para que el usuario pueda cargar archivos.
+2.3 Configurar vsftpd para permitir usuarios locales
+
+Edita el archivo de configuración de vsFTPd:
+
+sudo nano /etc/vsftpd.conf
+
+Busca y descomenta las siguientes líneas para permitir que los usuarios locales se conecten:
+
+local_enable=YES
+write_enable=YES
+chroot_local_user=YES
+
+local_enable=YES permite el acceso a los usuarios locales.
+
+write_enable=YES permite a los usuarios subir archivos.
+
+chroot_local_user=YES asegura que el usuario quede restringido a su directorio.
+
+Guarda y cierra el archivo (Ctrl + O, Enter, Ctrl + X).
+3. Habilitar logging en vsFTPd
+3.1 Configurar logs en vsFTPd
+
+Para habilitar el registro de eventos en vsFTPd, edita el archivo de configuración:
+
+sudo nano /etc/vsftpd.conf
+
+Descomenta y configura las siguientes líneas para habilitar los logs:
+
+xferlog_enable=YES
+xferlog_file=/var/log/vsftpd.log
+xferlog_std_format=YES
+
+xferlog_enable=YES habilita el registro de las transferencias de archivos.
+
+xferlog_file=/var/log/vsftpd.log define la ubicación del archivo de log.
+
+xferlog_std_format=YES usa un formato estándar de log.
+
+Guarda y cierra el archivo (Ctrl + O, Enter, Ctrl + X).
+3.2 Verificar los logs
+
+Después de realizar una transferencia de archivos o iniciar sesión, puedes ver el log con:
+
+tail -f /var/log/vsftpd.log
+
+4. Configuración de SSL en vsFTPd
+4.1 Crear o conseguir un certificado SSL
+
+Puedes usar un certificado SSL autofirmado o uno comprado. Para crear un certificado autofirmado:
+
+sudo mkdir /etc/ssl/certs
+sudo mkdir /etc/ssl/private
+
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt
+
+Esto generará dos archivos:
+
+    /etc/ssl/private/vsftpd.key: la clave privada
+    /etc/ssl/certs/vsftpd.crt: el certificado
+
+4.2 Configurar vsFTPd para usar SSL
+
+Edita nuevamente el archivo de configuración de vsFTPd:
+
+sudo nano /etc/vsftpd.conf
+
+Descomenta y configura las siguientes líneas:
+
+rsa_cert_file=/etc/ssl/certs/vsftpd.crt
+rsa_private_key_file=/etc/ssl/private/vsftpd.key
+ssl_enable=YES
+allow_anon_ssl=NO
+force_local_data_ssl=YES
+force_local_logins_ssl=YES
+ssl_tlsv1_2=YES
+ssl_tlsv1_1=YES
+ssl_sslv2=NO
+ssl_sslv3=NO
+
+    rsa_cert_file y rsa_private_key_file especifican los archivos del certificado y la clave privada.
+    ssl_enable=YES habilita el uso de SSL.
+    allow_anon_ssl=NO deshabilita SSL para usuarios anónimos.
+    force_local_data_ssl=YES obliga a que la transferencia de datos sea cifrada.
+    force_local_logins_ssl=YES obliga a que el login sea realizado de manera segura a través de SSL.
+    ssl_tlsv1_2=YES y ssl_tlsv1_1=YES habilitan los protocolos TLS, mientras que ssl_sslv2=NO y ssl_sslv3=NO deshabilitan versiones antiguas no seguras.
+
+4.3 Reiniciar el servicio de vsFTPd
+
+Una vez configurado, reinicia el servicio de vsFTPd para aplicar los cambios:
+
+sudo systemctl restart vsftpd
+
+5. Configuración de firewall (si es necesario)
+
+Si tienes un firewall activado, asegúrate de permitir el tráfico en el puerto FTP y en el puerto de SSL (generalmente el 21 y 990 para FTP sobre SSL).
+
+Si estás usando UFW, puedes permitir el tráfico con:
+
+sudo ufw allow 21
+sudo ufw allow 990
+
+6. Probar la conexión FTP segura
+
+Puedes probar la conexión al servidor FTP usando un cliente FTP como FileZilla o lftp. En FileZilla, solo debes seleccionar FTP - TLS/SSL al configurar la conexión.
+
+Con lftp en la terminal:
+
+lftp -u nombre_usuario -e "set ftp:ssl-allow yes; set ftp:ssl-force yes; open ftp://servidor_ftp"
