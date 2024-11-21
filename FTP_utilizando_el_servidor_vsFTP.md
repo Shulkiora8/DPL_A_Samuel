@@ -12,7 +12,7 @@ Paso 2: Enjaular a los usuarios usuario1 y usuario6
 
 Los usuarios usuario1 y usuario6 se deben enjaular en su directorio de trabajo (jaula chroot), lo que significa que estarán restringidos a su propio directorio de inicio y no podrán acceder a otras partes del sistema.
 
-    Configurar jaula en /etc/ssh/sshd_config para usuario1 y usuario6: Abre el archivo /etc/ssh/sshd_config para editarlo:
+Configurar jaula en /etc/ssh/sshd_config para usuario1 y usuario6: Abre el archivo /etc/ssh/sshd_config para editarlo:
 
 sudo nano /etc/ssh/sshd_config
 
@@ -60,7 +60,7 @@ Paso 5: Activar el log de usuarios
 
 Para activar el registro de acceso de usuarios en el servidor, aseguramos que el archivo de configuración de SSH permita registrar la información de acceso:
 
-    Configurar el archivo sshd_config: Abre /etc/ssh/sshd_config y asegúrate de que esté habilitado el logging:
+Configurar el archivo sshd_config: Abre /etc/ssh/sshd_config y asegúrate de que esté habilitado el logging:
 
 sudo nano /etc/ssh/sshd_config
 
