@@ -1,7 +1,5 @@
-Para configurar los usuarios y las condiciones que mencionas en un servidor Linux (asumiendo que se está utilizando un sistema basado en Unix como Ubuntu o CentOS), se realizarán los siguientes pasos:
+Para configurar los usuarios y las condiciones en un servidor Linux se realizarán los siguientes pasos:
 Paso 1: Crear los usuarios
-
-Se pueden crear los usuarios en el servidor utilizando el comando useradd de Linux. Ejecuta los siguientes comandos como root o un usuario con privilegios de sudo:
 
 sudo useradd usuario1
 sudo useradd usuario2
