@@ -36,12 +36,15 @@ Crear los directorios y establecer permisos:
 Asegúrate de que los directorios de los usuarios usuario1 y usuario6 tengan los permisos correctos:
 
 sudo mkdir -p /home/usuario1
+
 sudo mkdir -p /home/usuario6
 
 sudo chown root:root /home/usuario1
+
 sudo chmod 755 /home/usuario1
 
 sudo chown root:root /home/usuario6
+
 sudo chmod 755 /home/usuario6
 
 Crear directorios internos (opcional):
@@ -49,9 +52,11 @@ Crear directorios internos (opcional):
 Si deseas crear directorios para SFTP, puedes hacerlo de la siguiente manera:
 
 sudo mkdir /home/usuario1/uploads
+
 sudo mkdir /home/usuario6/uploads
 
 sudo chown usuario1:usuario1 /home/usuario1/uploads
+
 sudo chown usuario6:usuario6 /home/usuario6/uploads
 
 Paso 3: No enjaular a los usuarios usuario2 y usuario5
