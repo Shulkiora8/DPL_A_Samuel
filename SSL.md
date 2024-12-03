@@ -15,7 +15,7 @@ apt install openssl
 3. Generar la clave privada
 
 Genera una clave privada de 1024 bits, que se almacenará en el archivo server.key:
-``
+```
 openssl genrsa -out server.key 1024
 ```
 4. Crear el CSR (Certificate Signing Request)
