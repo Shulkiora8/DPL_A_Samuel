@@ -63,6 +63,7 @@ Edita la configuración de Apache para habilitar el soporte SSL en el dominio pr
 nano /etc/apache2/sites-available/prueba1.com.conf
 ```
 Añade la siguiente configuración al archivo:
+```
 <VirtualHost *:443>
     ServerName prueba1.com
     ServerAlias www.prueba1.com
