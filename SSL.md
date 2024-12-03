@@ -15,7 +15,7 @@ apt install openssl
 3. Generar la clave privada
 
 Genera una clave privada de 1024 bits, que se almacenará en el archivo server.key:
-v
+``
 openssl genrsa -out server.key 1024
 ```
 4. Crear el CSR (Certificate Signing Request)
@@ -63,22 +63,18 @@ Edita la configuración de Apache para habilitar el soporte SSL en el dominio pr
 nano /etc/apache2/sites-available/prueba1.com.conf
 ```
 Añade la siguiente configuración al archivo:
-```
 <VirtualHost *:443>
     ServerName prueba1.com
     ServerAlias www.prueba1.com
     ServerAdmin webmaster@prueba1.com
     DocumentRoot /var/www/html/prueba1.com/public
-
     SSLEngine on
     SSLCertificateKeyFile /etc/ssl/certs/server.key
     SSLCertificateFile /etc/ssl/certs/server.crt
-
     <Directory /var/www/html/prueba1.com/public>
         Options -Indexes +FollowSymLinks
         AllowOverride All
     </Directory>
-
     ErrorLog ${APACHE_LOG_DIR}/prueba1.com-error-log
     CustomLog ${APACHE_LOG_DIR}/prueba1.com-access.log combined
 </VirtualHost>
